@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { TransactionHistoryTable } from './TransactionHistory.styled.jsx';
 
+var flag = true;
+
 function TransactionHistory({ items }) {
   return (
     <TransactionHistoryTable className="transaction-history">
@@ -32,8 +34,10 @@ TransactionHistory.propTypes = {
 };
 
 function Transaction({ data }) {
+  const color = flag ? 'blue' : 'darkred';
+  flag = !flag;
   return (
-    <tr key={data.id}>
+    <tr key={data.id} style={{ color: color }}>
       <td>{data.type}</td>
       <td>{data.amount}</td>
       <td>{data.currency}</td>
